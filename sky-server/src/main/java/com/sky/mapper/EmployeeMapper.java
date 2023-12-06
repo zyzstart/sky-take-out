@@ -30,7 +30,7 @@ public interface EmployeeMapper {
             "(#{name},#{username},#{password},#{phone},#{sex},#{idNumber},#{createTime},#{updateTime},#{createUser},#{updateUser},#{status})")
     void insert(Employee employee);
 
-    Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
 
     /**
      * 根据主键动态修改属性
@@ -43,5 +43,16 @@ public interface EmployeeMapper {
      * @param employeePageQueryDTO
      * @return
      */
+    Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+
+    /**
+     * 根据id查询员工
+     * @param id
+     * @return
+     */
+    @Select("select * from employee where id = #{id}")
+    Employee getById(Long id);
+
 
 }
