@@ -1,5 +1,6 @@
 package com.sky.controller.admin;
 
+import com.alibaba.druid.support.spring.stat.annotation.Stat;
 import com.sky.constant.JwtClaimsConstant;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
@@ -92,5 +93,14 @@ public class EmployeeController {
         log.info("员工分页查询,参数为：{}",employeePageQueryDTO);
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
+    }
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用员工账号")
+    public Result startOrStop(@PathVariable Integer status,Long id){
+
+        log.info("启用禁用员工账号：{},{}", status,id);
+        employeeService.starOrStop(status,id);
+        return Result.success();
+
     }
 }
