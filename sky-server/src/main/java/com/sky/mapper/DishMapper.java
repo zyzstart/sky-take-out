@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+import java.util.List;
+
 @Mapper
 public interface DishMapper {
 
@@ -52,10 +54,20 @@ public interface DishMapper {
     @Delete("delete from dish where id = #{id}")
     void deleteById(Long id);
 
+
+
     /**
-     * 删除表中菜品数据
-     * @param dishId
+     * 根据菜品集合批量删除菜品
+     * @param ids
      */
-    @Delete("delete from dish_flavor where dish_id = #{dishId}")
-    void deleteByDishId(Long dishId);
+    void deleteByIds(List<Long> ids);
+
+
+
+    /**
+     * 根据id来动态修改菜品数据
+     * @param dish
+     */
+    @AutoFill(value = OperationType.UPDATE)
+    void update(Dish dish);
 }
