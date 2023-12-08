@@ -12,3 +12,9 @@ sky:
     access-key-id: LTAI5tGJpg695MinaDtuF87k
     access-key-secret: nA3YWb16dNRc2H7LYfjdUczjrvC5sm
     bucket-name: zyz-tlias
+
+  redis:
+    host: 192.168.111.100
+    port: 6379
+    password: 123456
+    database: 0
