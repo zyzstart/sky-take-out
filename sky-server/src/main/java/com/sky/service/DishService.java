@@ -52,4 +52,6 @@ public interface DishService {
 
     //根据分类id查询相关菜品
     List<Dish> list(Long categoryId);
+
+    void startOrStop(Integer status, Long id);
 }
